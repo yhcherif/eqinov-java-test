@@ -53,17 +53,24 @@ Nous souhaiterions connaître l'évolution de sa consommation mensuelle pour l'a
 - la valeur de la consommation mensuelle pour le mois concerné
 
 
-|Name of Column 1 |Name of Column 2 |Name of Column 3 
+...
+| `ORIGIN`
+| `VARCHAR(100)`
+| Source system code. `ice#dp_contact_official#denied_entity`
 
-|Cell in column 1, row 1
-|Cell in column 2, row 1
-|Cell in column 3, row 1
+| `SOURCE_ID`
+| `VARCHAR(200)`
+| Identifier of the denied entity in the list of given type.
 
-|Cell in column 1, row 2
-|Cell in column 2, row 2
-|Cell in column 3, row 2
-|===
+| `TYPE`
+| `INT`
+a|
+Type of the entity:
 
+- `1` -- Individual Person
+- `2` -- Legal entity
+- `3` -- Other
+...
 ====
 [source,text]
 ----
