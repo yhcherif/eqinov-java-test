@@ -43,6 +43,9 @@ Vous aurez par la suite besoin :
 Lorsque que vous êtes dans votre EDI, un fois le serveur lancé, vous accedez au projet dans votre navigateur en tapant http://localhost:8080/eqinov-java-test. Vous pouvez ainsi démarrer/debugguer, votre projet pour les développements qui vont seront demandés.
 
 ## Modifications demandées
+
+NOTE: pour les exercices, nous souhaitons que les traitements soient réalisés en java (pas de traitement javascript à part les appels ajax si vous le souhaitez)
+
 ### Contexte
 Eqinov a signé le contrat pour un nouveau client dans le cadre de son activité de flexilibité des consommations électriques. Ce client, Papeterie d'Issy Les Moulineaux, nous a donné son accord pour étudier l'historique de ses consommations. Vous trouverez donc sur l'ihm, l'historique de sa consommation pour l'année 2019.
 
@@ -56,7 +59,6 @@ Nous souhaiterions connaître l'évolution de sa consommation mensuelle pour l'a
 NOTE: les données présentes en base sont en MW et à pas 10 minutes
 
 NOTE: pour calculer la consommation mensuelle il faut d'abord prendre la consommation horaire en faisant la moyenne des puissances disponibles pour une heure puis sommer les puissances horaires sur le mois. 
-
 
 ### Exercice 2
 Nous souhaiterions connaître la consommation annuelle pour l'année 2019. 
