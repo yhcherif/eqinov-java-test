@@ -55,11 +55,4 @@ Nous souhaiterions connaître l'évolution de sa consommation mensuelle pour l'a
 
 NOTE: les données présentes en base sont en MW et à pas 10 minutes
 
-====
-[source,text]
-----
-Règle de gestion : 
-
-- pour calculer la consommation horaire, on fait la moyenne des valeurs de puissances qui composent chaque heure.
-----
-====
+Règle de gestion: pour calculer la consommation horaire, il faut réaliser la moyenne des valeurs de puissances qui composent chaque heure.
