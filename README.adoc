@@ -2,7 +2,7 @@
 
 Bienvenue dans le projet de test de recrutement pour la société Eqinov. L'objectif est de tester vos compétences en développement Java sur un projet simplifié avec les différents frameworks que nous utilisons. 
 
-# Pré Requis et installation
+# Pré-requis et installation
 Pour réaliser les développements demandés vous aurez besoin :
 
 - de la version 8 du jdk
@@ -25,6 +25,7 @@ pour maven
 ----
 
 Spring boot doit indiqué le démarrage du serveur dans la console. En tapant http://localhost:8080, vous accéderez à l'ihm web du projet.
+![](images/ihm.jpg)
 
 - d'un environnement de développement eclipse ou intelij. A Eqinov, nous utilisons eclipse dont voici le lien d'installation : https://www.eclipse.org/downloads/packages/release/2019-12/r/eclipse-ide-enterprise-java-developers
 - du serveur tomcat, nous utilisons la version 9 : https://tomcat.apache.org/download-90.cgi
