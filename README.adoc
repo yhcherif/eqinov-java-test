@@ -2,10 +2,10 @@
 
 Bienvenue dans le projet de test de recrutement pour la société Eqinov. L'objectif est de tester vos compétences en développement Java sur un projet simplifié avec les différents frameworks que nous utilisons. 
 
-# Installation
+# Pré Requis
 Pour réaliser les développements demandés vous aurez besoin :
 
 - d'un environnement de développement eclipse ou intelij. A Eqinov, nous utilisons eclipse dont voici le lien d'installation : https://www.eclipse.org/downloads/packages/release/2019-12/r/eclipse-ide-enterprise-java-developers
 - d'un outil de gestion de dépendances et de compilation, le projet est configuré pour utiliser maven ou gradle. A Eqinov, nous utilisons gradle. Voici les liens d'installation, des deux outils :
- * maven
- *gradle
+ * maven : https://maven.apache.org/maven-release/download.cgi
+ * gradle : https://gradle.org/releases/
