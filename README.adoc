@@ -98,3 +98,4 @@ Question n°1 : faire une maquette d’interface logicielle présentant le maxim
 
 Question n°2 : rédiger une spécification et préciser les règles à appliquer par les développeurs. 
 
+Question n°3 : lister les points nécessitant un échange avec l’équipe métier pour préciser leur demande et pouvoir compléter la spécification fonctionnelle. 
