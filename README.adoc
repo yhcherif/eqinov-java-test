@@ -83,3 +83,15 @@ Pour vérifier que votre développement fonctionne :
 - la consommation 2018 et l'évolution de la consommation mensuelle doit s'afficher si on choisit l'année 2018 dans la liste de selection
 
 NOTE: l'api retourne des données json
+
+### Exercice 4 (seulement valable si vous postulez au poste de développeur/chef de projet)
+
+L'équipe opérationnelle souhaite enrichir l'ihm existante dont voici l'expression de besoins :
+- Avoir une courbe affichant la consommation réalisée et la consommation prévisionnelle
+- Pouvoir choisir les pas de téléchargement des courbes : 10 min, 1/2h et 1h
+- Mentionner la consommation totale sur l’année
+- Pouvoir effectuer une sélection de date de visualisation de la courbe : jour, mois, trimestre, année. 
+
+Question n°1 : faire une maquette d’interface logicielle présentant le maximum d’éléments qui vous paraissent pertinents en lien avec la demande de l’équipe métier.
+Question n°2 : rédiger une spécification et préciser les règles à appliquer par les développeurs. 
+
