@@ -6,8 +6,22 @@ Bienvenue dans le projet de test de recrutement pour la société Eqinov. L'obje
 Pour réaliser les développements demandés vous aurez besoin :
 
 - de la version 8 du jdk
-- d'un environnement de développement eclipse ou intelij. A Eqinov, nous utilisons eclipse dont voici le lien d'installation : https://www.eclipse.org/downloads/packages/release/2019-12/r/eclipse-ide-enterprise-java-developers
 - d'un outil de gestion de dépendances et de compilation, le projet est configuré pour utiliser maven ou gradle. A Eqinov, nous utilisons gradle. Voici les liens d'installation, des deux outils :
  * maven : https://maven.apache.org/maven-release/download.cgi
  * gradle : https://gradle.org/releases/
+ 
+Après avoir récupérer le projet sur github, vous pourrez vérifier que le projet fonctionne en tapant les commandes suivantes :
+pour gradle
+[indent=0]
+----
+	$ ./gradlew bootRun
+----
+ 
+pour maven
+[indent=0]
+----
+	$ ./mvn spring-boot:run
+----
+
+- d'un environnement de développement eclipse ou intelij. A Eqinov, nous utilisons eclipse dont voici le lien d'installation : https://www.eclipse.org/downloads/packages/release/2019-12/r/eclipse-ide-enterprise-java-developers
 - du serveur tomcat, nous utilisons la version 9 : https://tomcat.apache.org/download-90.cgi
