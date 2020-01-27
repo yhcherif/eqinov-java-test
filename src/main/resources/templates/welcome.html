@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>Test recrutement IT Eqinov</title>
+	
+	<link rel="stylesheet" th:href="@{/webjars/jquery-ui/jquery-ui.min.css}" />
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/theme.css}">
+	
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<script th:src="@{/webjars/highstock/highstock.js}"></script>
+			
+	<script th:inline="javascript">
+		jQuery(document).ready(function ($) {
+			eqinov.init();
+	    });				
+	    
+		eqinov = function() {
+			var pub;
+			var chart;
+			
+		    function createChart(series){	    	
+		    	return Highcharts.stockChart('conso', {
+		    		chart: {
+		    	        type: 'line'
+		    	    },
+		            exporting:{
+		            	enabled: false
+		            },
+		            title: {
+		                text: ''
+		            },
+		            tooltip: {
+	        			xDateFormat: '%A %e %b %Y, %H:%M',
+		            },
+		            xAxis: {
+		                type: 'datetime',
+		                dateTimeLabelFormats: {
+		                  day: "%e. %b",
+		                  month: "%b '%y",
+		                  year: "%Y"
+		                }
+		            },
+		    		legend: {
+		    			enabled: false
+		    		},
+		    		credits: {
+						enabled: false
+					},
+					plotOptions: {
+				        line: {
+				            dataGrouping: {
+				                enabled: false
+				            }
+				        }
+				    },
+		            "series": series,
+		            lang: {
+		                noData: "Il n'existe pas de données de consommation pour ce site"
+		            },
+		        });
+		    };
+		    
+			pub = {
+				init: function(){	
+					eqinov.loadGraph([[${currentYear}]]);
+				},
+				
+				loadGraph: function(year){
+					if(chart) {
+			        	chart.showLoading('Rechargement du graph...');
+					}
+					$.getJSON([[@{/data/conso}]] + '?year=' + year, function (data) {
+			            var series = [{
+			            	id: "real",
+		                    type: "line",
+			            	name: "Consommation réalisée",
+			            	data: data
+			            }];
+	
+			            chart = createChart(series);
+			        });					
+				},  	
+				changeYear: function(year){
+					$.ajax({
+		    			url : [[@{/view/refresh}]]+'?year='+year,
+		    		   	type : 'GET',
+		    		   	success : function(data, textStatus, jqXHR){
+		    		   		$('#result').html(data);
+		    		   	},
+	    	  		    complete: function(data) {
+	    	  		    	eqinov.loadGraph(year);
+	    	  		    }
+		    		});
+				},  	
+			};
+	
+			return pub;
+		}();
+		  
+	</script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md navbar-eqinov fixed-top">
+	    <a class="navbar-brand" href="https://www.eqinov.com/" target="_blank">eqinov</a>
+	    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+			<span>Test de recrutement Java</span>
+		</div>
+	</nav>
+	
+	<main role="main" class="container">
+			
+		<!-- Nom du site et son adresse -->
+		<h2 th:text="${site.name}"></h2>
+		<span th:text="${site.address.fullAddress}"></span>		
+		
+		<!-- Sélection de l'année à afficher -->
+		<form class="form-inline justify-content-end">
+		  <label>Année : </label>&nbsp;
+		  <select class="form-control form-control-sm" style="width:100px" onchange="eqinov.changeYear(this.value)">
+				<option th:each="year : ${years}" th:value="${year}" th:text="${year}" th:selected="(${year}==${currentYear})">
+			</select>
+		</form>
+		
+		<!-- Affichage du résultat pour l'année et du fragment si besoin -->
+		<div id="result">
+			<th:block th:fragment="result">
+		 		<div id="conso"></div>
+			</th:block>
+		</div>		
+	 	
+	</main>
+</body>
+</html>
