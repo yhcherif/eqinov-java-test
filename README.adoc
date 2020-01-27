@@ -45,35 +45,21 @@ Lorsque que vous êtes dans votre EDI, un fois le serveur lancé, vous accedez a
 ### Contexte
 Eqinov a signé le contrat pour un nouveau client dans le cadre de son activité de flexilibité des consommations électriques. Ce client, Papeterie d'Issy Les Moulineaux, nous a donné son accord pour étudier l'historique de ses consommations. Vous trouverez donc depuis l'ihm, l'historique de sa consommation pour l'année 2019.
 
+
 ### Exercice 1
 Nous souhaiterions connaître l'évolution de sa consommation mensuelle pour l'année 2019. Pour cela, vous devrez ajouter un tableau sous le graphique de consommation :
 
 - avec une colonne pour chaque mois
-- avec le mois en-tête du tableau
+- avec le nom du mois en-tête du tableau
 - la valeur de la consommation mensuelle pour le mois concerné
 
+NOTE: les données présentes en base sont en MW et à pas 10 minutes
 
-...
-| `ORIGIN`
-| `VARCHAR(100)`
-| Source system code. `ice#dp_contact_official#denied_entity`
-
-| `SOURCE_ID`
-| `VARCHAR(200)`
-| Identifier of the denied entity in the list of given type.
-
-| `TYPE`
-| `INT`
-a|
-Type of the entity:
-
-- `1` -- Individual Person
-- `2` -- Legal entity
-- `3` -- Other
-...
 ====
 [source,text]
 ----
-Voici la règle de gestion : 
+Règle de gestion : 
+
+- pour calculer la consommation horaire, on fait la moyenne des valeurs de puissances qui composent chaque heure.
 ----
 ====
