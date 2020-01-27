@@ -40,3 +40,27 @@ Vous aurez par la suite besoin :
 - d'ajouter le serveur tomcat et d'ajouter le war eqinov-java-test au serveur tomcat (dans eclipse clic droit Add/remove)
 
 Lorsque que vous êtes dans votre EDI, un fois le serveur lancé, vous accedez au projet dans votre navigateur en tapant http://localhost:8080/eqinov-java-test. Vous pouvez ainsi démarré/debuggué, votre projet pours les développements qui vont seront demandés.
+
+## Modifications demandés
+### Contexte
+Eqinov a signé le contrat pour un nouveau client dans le cadre de son activité de flexilibité des consommations électriques. Ce client, Papeterie d'Issy Les Moulineaux, nous a donné son accord pour étudier l'historique de ses consommations. Vous trouverez donc depuis l'ihm, l'historique de sa consommation pour l'année 2019.
+
+### Exercice 1
+Nous souhaiterions connaître l'évolution de sa consommation mensuelle pour l'année 2019. Pour cela, vous devrez ajouter un tableau sous le graphique de consommation :
+
+- avec une colonne pour chaque mois
+- avec le mois en-tête du tableau
+- la valeur de la consommation mensuelle pour le mois concerné
+
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+====
+[source,text]
+----
+Voici la règle de gestion : 
+----
+====
