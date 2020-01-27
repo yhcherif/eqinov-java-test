@@ -4,4 +4,5 @@ Bienvenue dans le projet de test de recrutement pour la société Eqinov. L'obje
 
 # Installation
 Pour réaliser les développements demandés vous aurez besoin :
+
 - d'un environnement de développement eclipse ou intelij. A Eqinov, nous utilisons eclipse dont voici le lien d'installation : https://www.eclipse.org/downloads/packages/release/2019-12/r/eclipse-ide-enterprise-java-developers
