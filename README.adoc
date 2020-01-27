@@ -40,7 +40,7 @@ Vous aurez par la suite besoin :
 - d'importer les sources du projet dans votre environnement de développement
 - d'ajouter le serveur tomcat et d'ajouter le war eqinov-java-test au serveur tomcat (dans eclipse clic droit Add/remove)
 
-Lorsque que vous êtes dans votre EDI, un fois le serveur lancé, vous accedez au projet dans votre navigateur en tapant http://localhost:8080/eqinov-java-test. Vous pouvez ainsi démarrer/debugguer, votre projet pours les développements qui vont seront demandés.
+Lorsque que vous êtes dans votre EDI, un fois le serveur lancé, vous accedez au projet dans votre navigateur en tapant http://localhost:8080/eqinov-java-test. Vous pouvez ainsi démarrer/debugguer, votre projet pour les développements qui vont seront demandés.
 
 ## Modifications demandées
 ### Contexte
@@ -55,7 +55,7 @@ Nous souhaiterions connaître l'évolution de sa consommation mensuelle pour l'a
 
 NOTE: les données présentes en base sont en MW et à pas 10 minutes
 
-NOTE: pour calculer la consommation horaire, il faut réaliser la moyenne des valeurs de puissances qui composent chaque heure.
+NOTE: pour calculer la consommation mensuelle il faut d'abord prendre la consommation horaire en faisant la moyenne des puissances disponibles pour une heure puis sommer les puissances horaires sur le mois. 
 
 
 ### Exercice 2
