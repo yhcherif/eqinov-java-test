@@ -36,6 +36,7 @@ Pour modifier le code et débugguer le projet, vous aurez besoin :
 - du serveur tomcat, nous utilisons la version 9 : https://tomcat.apache.org/download-90.cgi
 
 Vous aurez par la suite besoin : 
+
 - d'importer les sources du projet dans votre environnement de développement
 - d'ajouter le serveur tomcat et d'ajouter le war eqinov-java-test au serveur tomcat (dans eclipse clic droit Add/remove)
 
