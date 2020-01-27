@@ -53,10 +53,16 @@ Nous souhaiterions connaître l'évolution de sa consommation mensuelle pour l'a
 - la valeur de la consommation mensuelle pour le mois concerné
 
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+|Name of Column 1 |Name of Column 2 |Name of Column 3 
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|Cell in column 3, row 2
+|===
 
 ====
 [source,text]
