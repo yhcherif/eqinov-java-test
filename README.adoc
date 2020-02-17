@@ -58,7 +58,7 @@ Nous souhaiterions connaître l'évolution de sa consommation mensuelle pour l'a
 
 NOTE: les données présentes en base sont en MW et à pas 10 minutes
 
-NOTE: pour calculer la consommation mensuelle il faut d'abord prendre la consommation horaire en faisant la moyenne des puissances disponibles pour une heure puis sommer les puissances horaires sur le mois. 
+NOTE: pour calculer la consommation mensuelle il faut d'abord prendre la consommation horaire en faisant la moyenne des puissances disponibles pour une heure puis sommer les consommations horaires sur le mois. 
 
 ### Exercice 2
 Nous souhaiterions connaître la consommation annuelle pour l'année 2019. 
