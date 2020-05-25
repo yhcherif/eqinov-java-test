@@ -34,7 +34,15 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
+		<dependencies>
+		    <dependency>
+		        <groupId>org.apache.httpcomponents</groupId>
+		        <artifactId>httpclient</artifactId>
+		        <version>4.5</version>
+		    </dependency>
+		</dependencies>
+
 		<!-- Ressources web -->
 		<dependency>
 		    <groupId>org.webjars</groupId>
@@ -45,20 +53,20 @@
 		    <groupId>org.webjars</groupId>
 		    <artifactId>highstock</artifactId>
 		    <version>6.0.3</version>
-		</dependency>				
+		</dependency>
 		<dependency>
 		    <groupId>org.webjars</groupId>
 		    <artifactId>jquery-ui</artifactId>
 		    <version>1.12.1</version>
-		</dependency>		
-		
+		</dependency>
+
 		<!-- Pour éviter la conf spring -->
 		<dependency>
 		    <groupId>org.webjars</groupId>
 		    <artifactId>webjars-locator</artifactId>
 		    <version>0.36</version>
 		</dependency>
-				
+
 		<!-- thymeleaf -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -79,14 +87,14 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- pour mocker les api web utilisées -->
 		<dependency>
 		    <groupId>com.github.tomakehurst</groupId>
 		    <artifactId>wiremock-jre8</artifactId>
 		    <version>2.23.2</version>
-		</dependency>	
-		
+		</dependency>
+
 	</dependencies>
 
 	<build>

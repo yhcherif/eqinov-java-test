@@ -39,6 +39,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.json/json
     compile group: 'org.json', name: 'json', version: '20200518'
 
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
+
+
 
     // pour mocker les api web utilis�es
 	testCompile group: 'com.github.tomakehurst', name: 'wiremock-jre8', version: '2.23.2'
