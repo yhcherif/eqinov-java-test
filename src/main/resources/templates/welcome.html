@@ -1,33 +1,33 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+
 	<title>Test recrutement IT Eqinov</title>
-	
+
 	<link rel="stylesheet" th:href="@{/webjars/jquery-ui/jquery-ui.min.css}" />
 	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 	<link rel="stylesheet" th:href="@{/css/theme.css}">
-	
+
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
 	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	<script th:src="@{/webjars/highstock/highstock.js}"></script>
-			
+
 	<script th:inline="javascript">
 		jQuery(document).ready(function ($) {
 			eqinov.init();
-	    });				
-	    
+	    });
+
 		eqinov = function() {
 			var pub;
 			var chart;
-			
-		    function createChart(series){	    	
+
+		    function createChart(series){
 		    	return Highcharts.stockChart('conso', {
 		    		chart: {
 		    	        type: 'line'
@@ -68,12 +68,12 @@
 		            },
 		        });
 		    };
-		    
+
 			pub = {
-				init: function(){	
+				init: function(){
 					eqinov.loadGraph([[${currentYear}]]);
 				},
-				
+
 				loadGraph: function(year){
 					if(chart) {
 			        	chart.showLoading('Rechargement du graph...');
@@ -85,11 +85,43 @@
 			            	name: "Consommation réalisée",
 			            	data: data
 			            }];
-	
+
 			            chart = createChart(series);
-			        });					
-				},  	
+			        });
+			        eqinov.fetchStats(year);
+				},
+				fetchStats: function(year) {
+					$.getJSON([[@{/data/conso/months}]] + '?year=' + year, function (data) {
+			            eqinov.fillTable(data);
+			        });
+
+			        $.getJSON([[@{/data/conso/annual}]] + '?year=' + year, function (data) {
+			            $('#annual_conso').text(data.toFixed(2));
+			        });
+				},
+				fillTable: function(items){
+					Object.keys(items).forEach(item => {
+						$('td#month-'+item).text(items[item].toFixed(2));
+					})
+				},
+				fetchHistory: function(target){
+					let $el = $(target);
+					$el.text($el.data('loading'));
+		        	$el.prop("disabled", true)
+					let currentYear = $("#year-selection").children("option:selected").val();
+					$.getJSON([[@{/data/conso/history}]], function (years) {
+			        	let options = years.sort().map(option => {
+			        		return `<option value="${option}" ${option == currentYear ? "selected" : "" }>${option}</option>}
+			        		option`;
+			        	}).join("");
+
+			        	$("#year-selection").html(options);
+			        	$el.text($el.data('text'));
+			        	$el.prop("disabled", false)
+			        });
+				},
 				changeYear: function(year){
+					$("#current-year-display").text(year);
 					$.ajax({
 		    			url : [[@{/view/refresh}]]+'?year='+year,
 		    		   	type : 'GET',
@@ -100,12 +132,12 @@
 	    	  		    	eqinov.loadGraph(year);
 	    	  		    }
 		    		});
-				},  	
+				},
 			};
-	
+
 			return pub;
 		}();
-		  
+
 	</script>
 </head>
 
@@ -117,28 +149,72 @@
 			<span>Test de recrutement Java</span>
 		</div>
 	</nav>
-	
+
 	<main role="main" class="container">
-			
+
 		<!-- Nom du site et son adresse -->
 		<h2 th:text="${site.name}"></h2>
-		<span th:text="${site.address.fullAddress}"></span>		
-		
+		<span th:text="${site.address.fullAddress}"></span>
+		<div class="row d-flex justify-content-between align-items-center mt-4">
+			<div class="">
+				<button class="btn btn-primary" data-loading="Récupération en cours..." data-text="Récupérer l'historique" type="button" onclick="eqinov.fetchHistory(this)">Récupérer l'historique</button>
+			</div>
+			<h4 class="h4">Consommation annuelle : <span id="annual_conso"></span> MWh</h4>
+		</div>
+
 		<!-- Sélection de l'année à afficher -->
 		<form class="form-inline justify-content-end">
 		  <label>Année : </label>&nbsp;
-		  <select class="form-control form-control-sm" style="width:100px" onchange="eqinov.changeYear(this.value)">
+		  <select class="form-control form-control-sm" style="width:100px" id="year-selection" onchange="eqinov.changeYear(this.value)">
 				<option th:each="year : ${years}" th:value="${year}" th:text="${year}" th:selected="(${year}==${currentYear})">
 			</select>
 		</form>
-		
+
 		<!-- Affichage du résultat pour l'année et du fragment si besoin -->
 		<div id="result">
 			<th:block th:fragment="result">
 		 		<div id="conso"></div>
 			</th:block>
-		</div>		
-	 	
+		</div>
+
+		<div class="row mt-1">
+			<h2 class="h2">Consommation mensuelle pour l’année <span id="current-year-display">[[${currentYear}]]</span></h2>
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th scope="col">Janvier</th>
+			      <th scope="col">Février</th>
+			      <th scope="col">Mars</th>
+			      <th scope="col">Avril</th>
+			      <th scope="col">Mai</th>
+			      <th scope="col">Juin</th>
+			      <th scope="col">Juillet</th>
+			      <th scope="col">Août</th>
+			      <th scope="col">Septembre</th>
+			      <th scope="col">Octobre</th>
+			      <th scope="col">Novembre</th>
+			      <th scope="col">Décembre</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td id="month-1"></td>
+			      <td id="month-2"></td>
+			      <td id="month-3"></td>
+			      <td id="month-4"></td>
+			      <td id="month-5"></td>
+			      <td id="month-6"></td>
+			      <td id="month-7"></td>
+			      <td id="month-8"></td>
+			      <td id="month-9"></td>
+			      <td id="month-10"></td>
+			      <td id="month-11"></td>
+			      <td id="month-12"></td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+
 	</main>
 </body>
 </html>
